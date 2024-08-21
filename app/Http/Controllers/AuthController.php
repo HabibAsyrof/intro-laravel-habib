@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function register(){
-        return view(
-            "register"
-        );
+    public function register() {
+        return view('register');
     }
 
-    public function welcome(Request $req){
-        return view(
-            "welcome", 
-            ["first_name" => $req->query("first_name"), 
-             "last_name" => $req->query("last_name")
-            ]
-        );
+    public function welcome(Request $request) {
+
+        $firstname = $request->query('firstname');
+        $lastname = $request->query('lastname');
+
+        return view('welcome', [
+            'firstname' => $firstname,
+            'lastname' => $lastname
+        ]);
     }
 }
